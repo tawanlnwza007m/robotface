@@ -1,1 +1,16 @@
-# robotface
+def idle_frame(s, t):
+    base_cy = 30
+    bounce = int(round(2 * math.sin(2 * math.pi * t)))
+    cy = base_cy - bounce
+
+    blink = (t > 0.82) or (0.35 < t < 0.40)
+    gap = 56
+
+    if blink:
+        eyes_block(s, cy, w=28, h=6, r=3, gap=gap)
+    else:
+        eyes_block(s, cy, w=30, h=26, r=7, gap=gap)
+
+frame_idle = new_screen()
+idle_frame(frame_idle, t=0.2)
+frame_idle
